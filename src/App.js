@@ -33,7 +33,7 @@ class App extends React.Component {
       <div className={this.props.className}>
         <Nav data={this.props.userQuery}/>
         <Switch>
-          <Route path='/Calendar' component={() => <Calendar data={this.props.userQuery} loading={this.props.userQuery.loading}/>} />
+          <Route exact path='/' component={() => <Calendar data={this.props.userQuery} loading={this.props.userQuery.loading}/>} />
           <Route path='/Summary' component={() => <Summary data={this.props.userQuery} />} loading={this.props.userQuery.loading}/>
           <Route path='/Statistics' component={() => <Statistics data={this.props.userQuery} loading={this.props.userQuery.loading}/>} />
         </Switch>

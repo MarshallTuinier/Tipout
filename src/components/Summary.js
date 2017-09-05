@@ -64,7 +64,7 @@ class Summary extends Component {
             <p className='scroll-text'>It looks like you haven't entered any information for this month.  Let's change that!</p>
           :
             <div>
-              <p className='scroll-text'>Scroll to view your summary!</p>
+              <p className='scroll-text'>Scroll to view your summary</p>
               <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutUp'>
                 <p>
                   In {monthNames[this.state.month]} of {this.state.year} , you've made a total of <b>${summaryData.totalTips}</b> with an hourly average of <b>${summaryData.totalAverage}</b>.
@@ -108,11 +108,12 @@ class Summary extends Component {
 const Content = styled.div`
   .heading {
     font-size: 40px;
+    font-weight: bold;
   }
 
   .scroll-text {
     font-size: 30px;
-    margin: 4em 1em;
+    margin: 2em 1em;
   }
 
   p {
