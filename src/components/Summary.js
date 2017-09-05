@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import CalendarHeader from './CalendarHeader'
 import getAllSummaryData  from '../utils/tipSummaryCalculations'
 import suffixer from '../utils/suffixer'
+import ScrollAnimation from 'react-animate-on-scroll'
 
 class Summary extends Component {
   constructor(props) {
@@ -63,20 +64,37 @@ class Summary extends Component {
             <p>It looks like you haven't entered any information for this month.  Let's change that!</p>
           :
             <div>
-              <p className='scroll-text'>Scroll down to view a summary!</p>
-              <p>In {monthNames[this.state.month]} of {this.state.year} , you've made a total of <b>${summaryData.totalTips}</b> with an hourly average of <b>${summaryData.totalAverage}</b>.</p>
-              <p>
-                Your best single earning day was <b>{summaryData.highestTipDay.dayName} the {suffixer(summaryData.highestTipDay.day)}</b> when you made <b>${summaryData.highestTipDay.tipAmount}</b>. Great job!
-              </p>
-              <p>
-                Your best single hourly day was <b>{summaryData.highestHourlyDay.dayName} the {suffixer(summaryData.highestHourlyDay.day)}</b> wen you averaged <b>${Math.round(summaryData.highestHourlyDay.tipAmount/summaryData.highestHourlyDay.hoursWorked)}/hr</b>.
-              </p>
-              <p>
-                The best day of the week for you was <b>{summaryData.bestTipDayOfWeek.dayName}</b>. You worked {summaryData.bestTipDayOfWeek.tipData.length} of those days for a total tip count of <b>${summaryData.bestTipDayOfWeek.totalTips}</b>. That's an average of <b>${summaryData.bestTipDayOfWeek.totalTips/summaryData.bestTipDayOfWeek.tipData.length}</b> every {summaryData.bestTipDayOfWeek.dayName}! Crazy!
-              </p>
-              <p>
-                From an hourly standpoint, your best day was <b>{summaryData.bestHourlyDayOfWeek.dayName}</b>. You worked a total of <b>{summaryData.bestHourlyDayOfWeek.totalHours}</b> hours on that day of the week, and averaged <b>${summaryData.bestHourlyDayOfWeek.hourlyAverage} per hour</b>.
-              </p>
+              <p className='scroll-text'>Scroll to view your summary!</p>
+              <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutLeft'>
+                <p>
+                  In {monthNames[this.state.month]} of {this.state.year} , you've made a total of <b>${summaryData.totalTips}</b> with an hourly average of <b>${summaryData.totalAverage}</b>.
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn='fadeInLeft' animateOut='fadeOutRight'>
+                <p>
+                  Your best single earning day was <b>{summaryData.highestTipDay.dayName} the {suffixer(summaryData.highestTipDay.day)}</b> when you made <b>${summaryData.highestTipDay.tipAmount}</b>. Great job!
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutLeft'>
+                <p>
+                  Your best single hourly day was <b>{summaryData.highestHourlyDay.dayName} the {suffixer(summaryData.highestHourlyDay.day)}</b> wen you averaged <b>${Math.round(summaryData.highestHourlyDay.tipAmount/summaryData.highestHourlyDay.hoursWorked)}/hr</b>.
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn='fadeInLeft' animateOut='fadeOutRight'>
+                <p>
+                  The best day of the week for you was <b>{summaryData.bestTipDayOfWeek.dayName}</b>. You worked {summaryData.bestTipDayOfWeek.tipData.length} of those days for a total tip count of <b>${summaryData.bestTipDayOfWeek.totalTips}</b>. That's an average of <b>${summaryData.bestTipDayOfWeek.totalTips/summaryData.bestTipDayOfWeek.tipData.length}</b> every {summaryData.bestTipDayOfWeek.dayName}! Crazy!
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutLeft'>
+                <p>
+                  From an hourly standpoint, your best day was <b>{summaryData.bestHourlyDayOfWeek.dayName}</b>. You worked a total of <b>{summaryData.bestHourlyDayOfWeek.totalHours}</b> hours on that day of the week, and averaged <b>${summaryData.bestHourlyDayOfWeek.hourlyAverage} per hour</b>.
+                </p>
+              </ScrollAnimation>
+              <ScrollAnimation animateIn='fadeInLeft' animateOut='fadeOutRight'>
+                <p>
+                  <b>Keep crushing it!</b>
+                </p>
+              </ScrollAnimation>
             </div>
           }
         </Content>
@@ -93,11 +111,12 @@ const Content = styled.div`
   }
 
   .scroll-text {
+    font-size: 30px;
     margin: 4em 1em;
   }
 
   p {
-    margin: 36vh 1em;
+    margin: 40vh 1em;
     font-size: 25px;
   }
 
@@ -108,7 +127,7 @@ const Content = styled.div`
     }
 
     p {
-      font-size: 19px;
+      font-size: 25px;
     }
 
   }
