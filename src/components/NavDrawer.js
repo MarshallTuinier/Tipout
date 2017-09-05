@@ -51,7 +51,7 @@ class NavDrawer extends Component {
             this.props.history.push("/Calendar");
           }}
         >
-          Calendar View
+          Calendar
         </MenuItem>
         <MenuItem
           onTouchTap={() => {
@@ -59,7 +59,7 @@ class NavDrawer extends Component {
             this.props.history.push("/Summary");
           }}
         >
-          Summary View
+          Summary
         </MenuItem>
         <MenuItem
           onTouchTap={() => {
@@ -67,7 +67,7 @@ class NavDrawer extends Component {
             this.props.history.push("/Statistics");
           }}
         >
-          Statistics View
+          Statistics
         </MenuItem>
         <Divider />
         <MenuItem

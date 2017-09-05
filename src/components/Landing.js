@@ -8,11 +8,17 @@ const Landing = (props) => {
     <div>
       <ImageContainer />
       <Content>
-        <div style={{fontSize: '36px',}}>
-          Welcome to Tipout
+        <div className='text'>
+          Welcome
+        </div>
+        <div className='text'>
+          to
+        </div>
+        <div className='logo'>
+          T<span className='logo-i'>i</span>pout
         </div>
         <div>
-          <p style={{marginTop: '10em', fontSize: '20px'}}>
+          <p style={{marginTop: '6em', fontSize: '20px'}}>
             The world's best tip tracking app.
           </p>
           <Button
@@ -47,8 +53,30 @@ const Button = styled.div`
 const Content = styled.div`
   color: white;
   margin: 5px;
-  margin-top: -60vh;
+  margin-top: -65vh;
   text-shadow: 0 2px 2px rgba(0,0,0,0.4);
+  .text {
+    font-size: 60px;
+    text-shadow: 0 2px 2px rgba(0,0,0,0.4);
+  }
+
+  .logo {
+    font-weight: bold;
+    font-size: 90px;
+    text-shadow: 0 2px 2px rgba(0,0,0,0.4);
+  }
+
+  .logo-i {
+    color: rgb(0, 188, 212);
+    position: relative;
+  }
+
+  .logo-i:before {
+    content: "ı";
+    position: absolute;
+    color: white;
+  }
+
 `
 const ImageContainer = styled.div`
       position: relative;

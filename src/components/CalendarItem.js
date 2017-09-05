@@ -232,6 +232,7 @@ const StyledPillbox = styled.p`
   background-color: rgb(0, 188, 212);
   color: white;
   border-radius: 10px;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.4);
 `
 //--------------------------------------
 
