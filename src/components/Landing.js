@@ -9,17 +9,14 @@ const Landing = (props) => {
       <ImageContainer />
       <Content>
         <div className='text'>
-          Welcome
-        </div>
-        <div className='text'>
-          to
+          Welcome to
         </div>
         <div className='logo'>
           T<span className='logo-i'>i</span>pout
         </div>
         <div>
-          <p style={{marginTop: '6em', fontSize: '20px'}}>
-            The world's best tip tracking app.
+          <p style={{marginTop: '3em', fontSize: '20px'}}>
+            The world's best cloud-based t<span className='logo-i'>i</span>p track<span className='logo-i'>i</span>ng app.
           </p>
           <Button
             onClick={() => props.history.push('/CreateUser')}
@@ -36,7 +33,7 @@ const Landing = (props) => {
 const Button = styled.div`
   border-radius: 4px;
   display: flex;
-  background-color: #3E8792;
+  background-color: rgb(0, 188, 212);
   width: 200px;
   height: 3em;
   margin: 20px auto;
@@ -55,9 +52,16 @@ const Content = styled.div`
   margin: 5px;
   margin-top: -65vh;
   text-shadow: 0 2px 2px rgba(0,0,0,0.4);
+
   .text {
     font-size: 60px;
     text-shadow: 0 2px 2px rgba(0,0,0,0.4);
+  }
+
+  @media(max-width: 600px) {
+    .text {
+      font-size: 40px;
+    }
   }
 
   .logo {
