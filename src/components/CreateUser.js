@@ -215,7 +215,7 @@ mutation CreateUserMutation($firstName: String!, $lastName: String!, $email: Str
 `
 
 const StyledContainer = styled.div`
-  padding-top: 7vh;
+  padding-top: 4vh;
   background-color: #c4c4c4;
   color: white;
   margin: 0 auto;
@@ -243,7 +243,7 @@ const StyledPage = styled.div`
 
 const AppText = styled.h2`
   margin: 0 auto;
-  padding-top: 10vh;
+  padding-top: 6vh;
   text-shadow: 0 2px 2px rgba(0,0,0,0.4);
   color: white;
   font-size: 90px;
