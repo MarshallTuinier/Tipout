@@ -65,32 +65,32 @@ class Summary extends Component {
           :
             <div>
               <p className='scroll-text'>Scroll to view your summary!</p>
-              <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutLeft'>
+              <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutUp'>
                 <p>
                   In {monthNames[this.state.month]} of {this.state.year} , you've made a total of <b>${summaryData.totalTips}</b> with an hourly average of <b>${summaryData.totalAverage}</b>.
                 </p>
               </ScrollAnimation>
-              <ScrollAnimation animateIn='fadeInLeft' animateOut='none'>
+              <ScrollAnimation animateIn='fadeInLeft' animateOut='fadeOutUp'>
                 <p>
                   Your best single earning day was <b>{summaryData.highestTipDay.dayName} the {suffixer(summaryData.highestTipDay.day)}</b> when you made <b>${summaryData.highestTipDay.tipAmount}</b>. Great job!
                 </p>
               </ScrollAnimation>
-              <ScrollAnimation animateIn='fadeInRight' animateOut='none'>
+              <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutUp'>
                 <p>
                   Your best single hourly day was <b>{summaryData.highestHourlyDay.dayName} the {suffixer(summaryData.highestHourlyDay.day)}</b> wen you averaged <b>${Math.round(summaryData.highestHourlyDay.tipAmount/summaryData.highestHourlyDay.hoursWorked)}/hr</b>.
                 </p>
               </ScrollAnimation>
-              <ScrollAnimation animateIn='fadeInLeft' animateOut='none'>
+              <ScrollAnimation animateIn='fadeInLeft' animateOut='fadeOutUp'>
                 <p>
                   The best day of the week for you was <b>{summaryData.bestTipDayOfWeek.dayName}</b>. You worked {summaryData.bestTipDayOfWeek.tipData.length} of those days for a total tip count of <b>${summaryData.bestTipDayOfWeek.totalTips}</b>. That's an average of <b>${summaryData.bestTipDayOfWeek.totalTips/summaryData.bestTipDayOfWeek.tipData.length}</b> every {summaryData.bestTipDayOfWeek.dayName}! Crazy!
                 </p>
               </ScrollAnimation>
-              <ScrollAnimation animateIn='fadeInRight' animateOut='none'>
+              <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutUp'>
                 <p>
                   From an hourly standpoint, your best day was <b>{summaryData.bestHourlyDayOfWeek.dayName}</b>. You worked a total of <b>{summaryData.bestHourlyDayOfWeek.totalHours}</b> hours on that day of the week, and averaged <b>${summaryData.bestHourlyDayOfWeek.hourlyAverage} per hour</b>.
                 </p>
               </ScrollAnimation>
-              <ScrollAnimation animateIn='fadeInLeft' animateOut='none'>
+              <ScrollAnimation animateIn='fadeInLeft' animateOut='fadeOutUp'>
                 <p>
                   <b>Keep crushing it!</b>
                 </p>
