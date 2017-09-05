@@ -40,7 +40,8 @@ class SignInUser extends Component {
             window.localStorage.setItem('graphcoolToken', response.data.signinUser.token)
             window.localStorage.setItem('graphcoolUserID', response.data.signinUser.user.id)
             window.location.reload();
-            this.props.history.push('/')
+            //Default users to the Calendar view
+            this.props.history.push('/Calendar')
           }).catch((e) => {
             alert('Error signing in, please try again.')
             console.log(e)
@@ -161,7 +162,7 @@ const StyledPage = styled.div`
     color: rgb(0, 188, 212);
     position: relative;
   }
-  
+
   .logo-i:before {
     content: "ı";
     position: absolute;

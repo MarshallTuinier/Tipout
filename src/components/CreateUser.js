@@ -57,7 +57,8 @@ class CreateUser extends Component {
             window.localStorage.setItem('graphcoolToken', response.data.signinUser.token)
             window.localStorage.setItem('graphcoolUserID', response.data.signinUser.user.id)
             window.location.reload();
-            this.props.history.push('/')
+            //Default users to the Calendar page
+            this.props.history.push('/Calendar')
           }).catch((e) => {
             console.error(e)
             this.props.history.push('/')
