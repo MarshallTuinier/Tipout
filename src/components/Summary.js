@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import CalendarHeader from './CalendarHeader'
-import { getAllSummaryData } from '../utils/tipSummaryCalculations'
+import getAllSummaryData  from '../utils/tipSummaryCalculations'
+import suffixer from '../utils/suffixer'
+
 class Summary extends Component {
   constructor(props) {
     super(props);
@@ -39,8 +41,11 @@ class Summary extends Component {
   }
 
   render() {
+    //Here we filter our data to only diplay from the month selected in the CalendarHeader Component
+    //Data comes from various helper functions in tipSummaryCalculations in the utils folder
     const filteredTipsByMonth = this.props.data.User.tips.filter(month => month.month === this.state.month)
     const summaryData = getAllSummaryData(filteredTipsByMonth)
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     console.log(summaryData)
     console.log(this.props)
     return(
@@ -57,7 +62,22 @@ class Summary extends Component {
           ?
             <p>It looks like you haven't entered any information for this month.  Let's change that!</p>
           :
-            <div></div>
+            <div>
+              <p className='scroll-text'>Scroll down to view a summary!</p>
+              <p>In {monthNames[this.state.month]} of {this.state.year} , you've made a total of <b>${summaryData.totalTips}</b> with an hourly average of <b>${summaryData.totalAverage}</b>.</p>
+              <p>
+                Your best single earning day was <b>{summaryData.highestTipDay.dayName} the {suffixer(summaryData.highestTipDay.day)}</b> when you made <b>${summaryData.highestTipDay.tipAmount}</b>. Great job!
+              </p>
+              <p>
+                Your best single hourly day was <b>{summaryData.highestHourlyDay.dayName} the {suffixer(summaryData.highestHourlyDay.day)}</b> wen you averaged <b>${Math.round(summaryData.highestHourlyDay.tipAmount/summaryData.highestHourlyDay.hoursWorked)}/hr</b>.
+              </p>
+              <p>
+                The best day of the week for you was <b>{summaryData.bestTipDayOfWeek.dayName}</b>. You worked {summaryData.bestTipDayOfWeek.tipData.length} of those days for a total tip count of <b>${summaryData.bestTipDayOfWeek.totalTips}</b>. That's an average of <b>${summaryData.bestTipDayOfWeek.totalTips/summaryData.bestTipDayOfWeek.tipData.length}</b> every {summaryData.bestTipDayOfWeek.dayName}! Crazy!
+              </p>
+              <p>
+                From an hourly standpoint, your best day was <b>{summaryData.bestHourlyDayOfWeek.dayName}</b>. You worked a total of <b>{summaryData.bestHourlyDayOfWeek.totalHours}</b> hours on that day of the week, and averaged <b>${summaryData.bestHourlyDayOfWeek.hourlyAverage} per hour</b>.
+              </p>
+            </div>
           }
         </Content>
       </div>
@@ -65,18 +85,36 @@ class Summary extends Component {
   }
 }
 
+//-------------------------Styles----------------------------
 
 const Content = styled.div`
   .heading {
-    font-size: 50px;
+    font-size: 40px;
+  }
+
+  .scroll-text {
+    margin: 4em 1em;
+  }
+
+  p {
+    margin: 36vh 1em;
+    font-size: 25px;
   }
 
   @media(max-width: 600px) {
+
     .heading {
-      font-size: 40px;
+      font-size: 30px;
     }
+
+    p {
+      font-size: 19px;
+    }
+
   }
 `
 export default styled(Summary)`
+  max-width: 1000px;
+  margin: 0 auto;
   padding-top: 47px;
 `
