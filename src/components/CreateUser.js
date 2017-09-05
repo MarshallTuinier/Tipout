@@ -5,6 +5,7 @@ import Formsy from 'formsy-react';
 import { RaisedButton, Paper } from 'material-ui'
 import { FormsyText } from 'formsy-material-ui/lib'
 import styled from 'styled-components'
+import {GC_AUTH_TOKEN, GC_USER_ID} from '../utils/constants.js'
 
 class CreateUser extends Component {
   constructor(props) {
@@ -54,8 +55,8 @@ class CreateUser extends Component {
     const {firstName, lastName, email, password} = this.state
     this.props.createUserMutation({variables: {firstName, lastName, email, password}})
       .then((response) => {
-            window.localStorage.setItem('graphcoolToken', response.data.signinUser.token)
-            window.localStorage.setItem('graphcoolUserID', response.data.signinUser.user.id)
+            window.localStorage.setItem(GC_AUTH_TOKEN, response.data.signinUser.token)
+            window.localStorage.setItem(GC_USER_ID, response.data.signinUser.user.id)
             window.location.reload();
             //Default users to the Calendar page
             this.props.history.push('/Calendar')
