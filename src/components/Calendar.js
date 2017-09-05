@@ -133,5 +133,6 @@ const DayNames = styled.div`
 
 export default styled(Calendar)`
   position: relative;
-  animation: ${SlideLeft} .3s
+  animation: ${SlideLeft} .3s;
+  margin-top: 50px;
 `

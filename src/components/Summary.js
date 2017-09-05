@@ -136,4 +136,5 @@ export default styled(Summary)`
   max-width: 1000px;
   margin: 0 auto;
   padding-top: 47px;
+  margin-top: 50px;
 `

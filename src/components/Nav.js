@@ -32,6 +32,7 @@ export default class Nav extends Component {
         <AppBar
           title={<span style={{'position': 'relative', 'right': '32px', 'fontSize': '30px'}}>Tipout</span>}
           iconElementLeft={<IconButton onTouchTap={this.handleOpenDrawer}><NavigationMenu /></IconButton>}
+          style={{position: 'fixed'}}
         >
         </AppBar>
         <NavDrawer open={this.state.openDrawer} handleClose={this.handleCloseDrawer} data={this.props.data} />

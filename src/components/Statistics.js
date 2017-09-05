@@ -12,4 +12,5 @@ const Statistics = (props) => {
 export default styled(Statistics)`
   width: 1000px;
   margin: 0 auto;
+  margin-top: 50px;
 `
