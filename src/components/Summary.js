@@ -61,7 +61,7 @@ class Summary extends Component {
           <span className='heading'>Hey {this.props.data.User.firstName}!</span>
           {summaryData.highestTipDay === "none"
           ?
-            <p>It looks like you haven't entered any information for this month.  Let's change that!</p>
+            <p className='scroll-text'>It looks like you haven't entered any information for this month.  Let's change that!</p>
           :
             <div>
               <p className='scroll-text'>Scroll to view your summary!</p>
