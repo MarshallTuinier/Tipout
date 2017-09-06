@@ -6,8 +6,8 @@ import { graphql, gql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 const addMutation = gql`
-  mutation addTip($tipAmount: Float!, $hoursWorked: Float!, $year: Int!, $month: Int!, $day: Int!, $notes: String, $userId: ID, $dayName: String) {
-    createTip(tipAmount: $tipAmount, hoursWorked: $hoursWorked, year: $year, month: $month, day: $day, notes: $notes, userId: $userId, dayName: $dayName) {
+  mutation addTip($tipAmount: Float!, $hoursWorked: Float!, $year: Int!, $month: Int!, $day: Int!, $notes: String, $userId: ID, $dayName: String, $fullDate: String!) {
+    createTip(tipAmount: $tipAmount, hoursWorked: $hoursWorked, year: $year, month: $month, day: $day, notes: $notes, userId: $userId, dayName: $dayName, fullDate: $fullDate) {
       tipAmount
       hoursWorked
       year
@@ -15,6 +15,7 @@ const addMutation = gql`
       day
       notes
       dayName
+      fullDate
       user {
         id
       }
@@ -51,8 +52,9 @@ class NewTipInputForm extends React.Component {
     const notes = this.state.notes;
     const userId = this.props.user;
     const dayName = this.props.dayName
+    const fullDate = `${month}/${day}/${year}`
 
-    this.props.mutate({variables: {tipAmount, hoursWorked, year, month, day, notes, userId, dayName}})
+    this.props.mutate({variables: {tipAmount, hoursWorked, year, month, day, notes, userId, dayName, fullDate}})
       .then(() => {
         window.location.reload();
       })

@@ -36,6 +36,7 @@ const getTotalTips = arr => {
   if (arr.length === 0) {
     return 0
   }
+  console.log(arr)
   return arr.reduce((acc, cur) => {
     return acc + cur.tipAmount
   }, 0)

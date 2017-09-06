@@ -7,7 +7,6 @@ const SlideLeft = keyframes`
 
   to {
     left: 0%;
-    opacity: 1;
   }
 `
 
