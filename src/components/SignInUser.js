@@ -35,7 +35,6 @@ class SignInUser extends Component {
 
   signinUser = () => {
     const { email, password } = this.state;
-    console.log('called')
     this.props.signinUserMutation({variables: {email, password}})
       .then((response) => {
             window.localStorage.setItem(GC_AUTH_TOKEN, response.data.signinUser.token)

@@ -10,7 +10,8 @@ const CalendarHeader = (props) => {
       <RaisedButton label='&larr;' onTouchTap={props.handlePrev} primary={true} className='calendar-button'/>
       <div
         onTouchTap={props.handleOpenDatePicker}
-        style={{'fontSize': '25px', 'cursor': 'pointer',}}>
+        className='month-name'
+      >
         {monthNamesFull[props.month]}  {props.year}
       </div>
       <RaisedButton label='&rarr;' onTouchTap={props.handleNext} primary={true} className='calendar-button'/>
@@ -27,6 +28,11 @@ export default styled(CalendarHeader)`
   align-items: center;
   width: 90vw;
   padding-bottom: 20px;
+
+  .month-name {
+    font-size: 45px;
+    cursor: pointer;
+  }
   @media (max-width: 600px) {
     .calendar-header h2 {
       font-size: 20px;
@@ -34,6 +40,9 @@ export default styled(CalendarHeader)`
     .calendar-button {
       min-width: 0 !important;
       max-width: 20vw !important;
+    }
+    .month-name {
+      font-size: 25px;
     }
   }
 `

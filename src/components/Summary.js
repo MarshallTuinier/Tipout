@@ -58,13 +58,11 @@ class Summary extends Component {
           month={this.state.month}
         />
         <Content>
-          <span className='heading'>Hey {this.props.data.User.firstName}!</span>
           {summaryData.highestTipDay === "none"
           ?
             <p className='scroll-text'>It looks like you haven't entered any information for this month.  Let's change that!</p>
           :
             <div>
-              <p className='scroll-text'>Scroll to view your summary</p>
               <ScrollAnimation animateIn='fadeInRight' animateOut='fadeOutUp'>
                 <p>
                   In {monthNames[this.state.month]} of {this.state.year} , you've made a total of <b>${summaryData.totalTips}</b> with an hourly average of <b>${summaryData.totalAverage}</b>.
@@ -112,13 +110,13 @@ const Content = styled.div`
   }
 
   .scroll-text {
-    font-size: 30px;
+    font-size: 40px;
     margin: 2em 1em;
   }
 
   p {
-    margin: 40vh 1em;
-    font-size: 25px;
+    margin: 450px 1em;
+    font-size: 40px;
   }
 
   @media(max-width: 600px) {
@@ -128,7 +126,7 @@ const Content = styled.div`
     }
 
     p {
-      font-size: 25px;
+      font-size: 33px;
     }
 
   }
