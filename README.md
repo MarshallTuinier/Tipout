@@ -13,4 +13,4 @@ npm start
 
 # Demo
 
-To view a working demo, head over to tipout.surge.sh
+To view a working demo, head over to (tipout.surge.sh)
