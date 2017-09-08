@@ -115,7 +115,7 @@ const Content = styled.div`
   }
 
   p {
-    margin: 450px 1em;
+    margin: 350px 1em;
     font-size: 40px;
   }
 

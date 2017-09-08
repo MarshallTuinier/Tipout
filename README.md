@@ -5,6 +5,8 @@ Tip-tracking and statistics software built with React, Apollo, and GraphQL.
 
 git clone
 
+cd tipout
+
 npm install
 
 npm start
