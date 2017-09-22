@@ -24,9 +24,9 @@ class AppContainer extends Component {
       return (
         <div>
           <Switch>
-            <Route exact path="/" component={Landing} />
             <Route path="/CreateUser" component={CreateUser} />
             <Route path="/SignInUser" component={SignInUser} />
+            <Route exact path="/*" component={Landing} />
           </Switch>
         </div>
       );
