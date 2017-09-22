@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import CalendarGridBuilder from './CalendarGridBuilder';
 import CalendarHeader from './CalendarHeader';
-import styled  from 'styled-components'
-import { SlideLeft } from '../utils/AnimationHelpers'
-import { DatePicker } from 'material-ui'
+import styled from 'styled-components';
+import { SlideLeft } from '../utils/AnimationHelpers';
+import { DatePicker } from 'material-ui';
 
 class Calendar extends Component {
   constructor(props) {
@@ -12,116 +12,111 @@ class Calendar extends Component {
     this.state = {
       year: date.getFullYear(),
       month: date.getMonth(),
-      dayNames: ['Su','Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      dayNames: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
       pickerValue: null,
       pickerFocusDate: null,
       tipData: props.data.User.tips
-    }
+    };
   }
 
   handleOpenDatePicker = () => {
-    this.refs.dp.focus()
-  }
+    this.refs.dp.focus();
+  };
 
   handlePickerChange = (event, date) => {
     this.setState({
       pickerValue: date,
       year: date.getFullYear(),
       month: date.getMonth(),
-      pickerFocusDate: date.getDate(),
-    })
-  }
+      pickerFocusDate: date.getDate()
+    });
+  };
 
   handleNext = () => {
     if (this.state.month === 11) {
       this.setState(prevState => ({
         month: 0,
         year: prevState.year + 1,
-        pickerFocusDate: null,
-      }))
+        pickerFocusDate: null
+      }));
     } else {
       this.setState(prevState => ({
         month: prevState.month + 1,
-        pickerFocusDate: null,
-      }))
+        pickerFocusDate: null
+      }));
     }
-  }
+  };
 
   handlePrev = () => {
     if (this.state.month === 0) {
       this.setState(prevState => ({
         month: 11,
         year: prevState.year - 1,
-        pickerFocusDate: null,
-      }))
+        pickerFocusDate: null
+      }));
     } else {
       this.setState(prevState => ({
         month: prevState.month - 1,
-        pickerFocusDate: null,
-      }))
+        pickerFocusDate: null
+      }));
     }
-  }
+  };
 
   render() {
-    const user = this.props.data.User.id
-    const tipData = this.state.tipData.filter(tip => tip.month === this.state.month && tip.year === this.state.year)
+    const user = this.props.data.User.id;
+    const tipData = this.state.tipData.filter(
+      tip => tip.month === this.state.month && tip.year === this.state.year
+    );
     return (
-        <div className={this.props.className}>
-          <StyledDiv>
-            <HiddenDiv>
-              <DatePicker
-                ref='dp'
-                value={this.state.pickerValue}
-                id='datepick'
-                openToYearSelection
-                onChange={this.handlePickerChange}
-                hideCalendarDate
-                autoOk
-              />
-            </HiddenDiv>
-            <CalendarHeader
-              handleNext={this.handleNext}
-              handlePrev={this.handlePrev}
-              handleOpenDatePicker={this.handleOpenDatePicker}
-              year={this.state.year}
-              month={this.state.month}
+      <div className={this.props.className}>
+        <StyledDiv>
+          <HiddenDiv>
+            <DatePicker
+              ref="dp"
+              value={this.state.pickerValue}
+              id="datepick"
+              openToYearSelection
+              onChange={this.handlePickerChange}
+              hideCalendarDate
+              autoOk
             />
-          </StyledDiv>
-          <DayNamesContainer>
-            {this.state.dayNames.map((day) =>
-              <DayNames key={day}>{day}</DayNames>
-            )}
-          </DayNamesContainer>
-          <CalendarGridBuilder
+          </HiddenDiv>
+          <CalendarHeader
             handleNext={this.handleNext}
             handlePrev={this.handlePrev}
+            handleOpenDatePicker={this.handleOpenDatePicker}
             year={this.state.year}
             month={this.state.month}
-            pickerFocusDate={this.state.pickerFocusDate}
-            tipData={tipData}
-            loading={this.props.loading}
-            user={user}
           />
-        </div>
-    )
+        </StyledDiv>
+        <DayNamesContainer>
+          {this.state.dayNames.map(day => <DayNames key={day}>{day}</DayNames>)}
+        </DayNamesContainer>
+        <CalendarGridBuilder
+          handleNext={this.handleNext}
+          handlePrev={this.handlePrev}
+          year={this.state.year}
+          month={this.state.month}
+          pickerFocusDate={this.state.pickerFocusDate}
+          tipData={tipData}
+          loading={this.props.loading}
+          user={user}
+        />
+      </div>
+    );
   }
 }
 
-
 //styles
 
-const StyledDiv = styled.div`
-
-`
-const HiddenDiv = styled.div`
-  visibility: hidden;
-`
+const StyledDiv = styled.div``;
+const HiddenDiv = styled.div`visibility: hidden;`;
 const DayNamesContainer = styled.div`
   width: 95%;
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
-`
+`;
 
 const DayNames = styled.div`
   font-size: 20px;
@@ -129,10 +124,10 @@ const DayNames = styled.div`
   display: inline-block;
   float: left;
   margin-bottom: 20px;
-`
+`;
 
 export default styled(Calendar)`
   position: relative;
-  animation: ${SlideLeft} .3s;
+  animation: ${SlideLeft} 0.3s;
   margin-top: 50px;
-`
+`;

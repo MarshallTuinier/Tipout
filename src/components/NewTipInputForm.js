@@ -1,13 +1,33 @@
 import React from 'react';
 import Formsy from 'formsy-react';
-import { RaisedButton} from 'material-ui';
+import { RaisedButton } from 'material-ui';
 import { FormsyText } from 'formsy-material-ui/lib';
 import { graphql, gql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
 
 const addMutation = gql`
-  mutation addTip($tipAmount: Float!, $hoursWorked: Float!, $year: Int!, $month: Int!, $day: Int!, $notes: String, $userId: ID, $dayName: String, $fullDate: String!) {
-    createTip(tipAmount: $tipAmount, hoursWorked: $hoursWorked, year: $year, month: $month, day: $day, notes: $notes, userId: $userId, dayName: $dayName, fullDate: $fullDate) {
+  mutation addTip(
+    $tipAmount: Float!
+    $hoursWorked: Float!
+    $year: Int!
+    $month: Int!
+    $day: Int!
+    $notes: String
+    $userId: ID
+    $dayName: String
+    $fullDate: String!
+  ) {
+    createTip(
+      tipAmount: $tipAmount
+      hoursWorked: $hoursWorked
+      year: $year
+      month: $month
+      day: $day
+      notes: $notes
+      userId: $userId
+      dayName: $dayName
+      fullDate: $fullDate
+    ) {
       tipAmount
       hoursWorked
       year
@@ -21,27 +41,26 @@ const addMutation = gql`
       }
     }
   }
-`
-
+`;
 
 class NewTipInputForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       canSubmit: false,
       tipAmount: '',
       hoursWorked: '',
-      notes: '',
-    }
+      notes: ''
+    };
   }
 
   enableButton = () => {
-    this.setState({ canSubmit: true })
-  }
+    this.setState({ canSubmit: true });
+  };
 
   disableButton = () => {
-    this.setState({ canSubmit: false })
-  }
+    this.setState({ canSubmit: false });
+  };
 
   submitForm = () => {
     const tipAmount = parseFloat(this.state.tipAmount);
@@ -51,34 +70,47 @@ class NewTipInputForm extends React.Component {
     const day = this.props.day;
     const notes = this.state.notes;
     const userId = this.props.user;
-    const dayName = this.props.dayName
-    const fullDate = `${month}/${day}/${year}`
+    const dayName = this.props.dayName;
+    const fullDate = `${month}/${day}/${year}`;
 
-    this.props.mutate({variables: {tipAmount, hoursWorked, year, month, day, notes, userId, dayName, fullDate}})
+    this.props
+      .mutate({
+        variables: {
+          tipAmount,
+          hoursWorked,
+          year,
+          month,
+          day,
+          notes,
+          userId,
+          dayName,
+          fullDate
+        }
+      })
       .then(() => {
         window.location.reload();
       })
       .catch(error => {
-        alert("Sorry, there was an error")
-        console.error(error)
-      })
-  }
+        alert('Sorry, there was an error');
+        console.error(error);
+      });
+  };
 
   notifyFormError = error => {
-    console.error(`form error: ${error}`)
-  }
+    console.error(`form error: ${error}`);
+  };
 
   handleTipChange = event => {
-    this.setState({tipAmount: event.target.value})
-  }
+    this.setState({ tipAmount: event.target.value });
+  };
 
   handleHoursChange = event => {
-    this.setState({hoursWorked: event.target.value})
-  }
+    this.setState({ hoursWorked: event.target.value });
+  };
 
   handleNotesChange = event => {
-    this.setState({notes: event.target.value})
-  }
+    this.setState({ notes: event.target.value });
+  };
 
   render() {
     const styles = {
@@ -87,11 +119,10 @@ class NewTipInputForm extends React.Component {
         margin: '10px auto',
         marginBottom: '30px',
         paddingBottom: '10px',
-        overflow: 'hidden',
-
+        overflow: 'hidden'
       },
       inputStyle: {
-        margin: 'auto',
+        margin: 'auto'
       },
       submitStyle: {
         margin: '20px auto',
@@ -103,11 +134,11 @@ class NewTipInputForm extends React.Component {
         flexDirection: 'column',
         margin: '0 auto'
       }
-    }
+    };
 
-    const {paperStyle, inputStyle, submitStyle, formStyle } = styles;
+    const { paperStyle, inputStyle, submitStyle, formStyle } = styles;
     return (
-      <div style={{height: '95vh'}}>
+      <div style={{ height: '95vh' }}>
         <div style={paperStyle}>
           <Formsy.Form
             onValid={this.enableButton}
@@ -117,43 +148,43 @@ class NewTipInputForm extends React.Component {
             style={formStyle}
           >
             <FormsyText
-              name='tipAmount'
+              name="tipAmount"
               required
-              validations='isNumeric'
-              floatingLabelText='How much did you make?'
-              hintText='Tips'
+              validations="isNumeric"
+              floatingLabelText="How much did you make?"
+              hintText="Tips"
               value={this.state.tipAmount}
               onChange={this.handleTipChange}
-              validationError='Please enter a number'
-              autoComplete='off'
+              validationError="Please enter a number"
+              autoComplete="off"
               style={inputStyle}
             />
             <FormsyText
-              name='hoursWorked'
+              name="hoursWorked"
               required
-              validations='isNumeric'
-              floatingLabelText='Hours Worked?'
-              hintText='Hours'
+              validations="isNumeric"
+              floatingLabelText="Hours Worked?"
+              hintText="Hours"
               value={this.state.hoursWorked}
               onChange={this.handleHoursChange}
-              validationError='Please enter a number'
-              autoComplete='off'
+              validationError="Please enter a number"
+              autoComplete="off"
               style={inputStyle}
             />
             <FormsyText
-              name='notes'
-              hintText='Notes'
-              floatingLabelText='Any notes for the day?'
+              name="notes"
+              hintText="Notes"
+              floatingLabelText="Any notes for the day?"
               value={this.state.notes}
               onChange={this.handleNotesChange}
-              autoComplete='off'
+              autoComplete="off"
               style={inputStyle}
             />
             <div>
               <RaisedButton
                 style={submitStyle}
                 onTouchTap={this.props.hideInputForm}
-                label='Cancel'
+                label="Cancel"
               />
               <RaisedButton
                 style={submitStyle}
@@ -170,7 +201,6 @@ class NewTipInputForm extends React.Component {
   }
 }
 
-
 const FormWithMutation = graphql(addMutation)(NewTipInputForm);
 
-export default withRouter(FormWithMutation)
+export default withRouter(FormWithMutation);

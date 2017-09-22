@@ -1,4 +1,4 @@
-import { keyframes } from 'styled-components'
+import { keyframes } from 'styled-components';
 
 const SlideLeft = keyframes`
   from {
@@ -8,7 +8,7 @@ const SlideLeft = keyframes`
   to {
     left: 0%;
   }
-`
+`;
 
 const SlideRight = keyframes`
   from {
@@ -18,7 +18,7 @@ const SlideRight = keyframes`
   to {
     right: 0%;
   }
-`
+`;
 
 const FadeIn = keyframes`
   from {
@@ -28,6 +28,6 @@ const FadeIn = keyframes`
   to {
     opacity: 1
   }
-`
+`;
 
-export { SlideLeft, SlideRight, FadeIn }
+export { SlideLeft, SlideRight, FadeIn };

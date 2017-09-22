@@ -1,22 +1,36 @@
-import React, { Component } from 'react'
-import { MenuItem, DropDownMenu } from 'material-ui'
+import React, { Component } from 'react';
+import { MenuItem, DropDownMenu } from 'material-ui';
 
-const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-const months = monthNames.map((month, index) => <MenuItem value={index} key={index} primaryText={monthNames[index]} />)
+const monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+const months = monthNames.map((month, index) => (
+  <MenuItem value={index} key={index} primaryText={monthNames[index]} />
+));
 
 export default class YearDropdown extends Component {
-
   constructor(props) {
     super(props);
-    const currentMonth = new Date().getMonth()
+    const currentMonth = new Date().getMonth();
     this.state = {
       value: currentMonth
-    }
+    };
   }
 
   handleChange = (event, index, value) => {
-    this.setState({value})
-  }
+    this.setState({ value });
+  };
 
   render() {
     return (
@@ -35,4 +49,4 @@ export default class YearDropdown extends Component {
 
 const styles = {
   width: 200
-}
+};

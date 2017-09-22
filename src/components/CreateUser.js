@@ -1,15 +1,15 @@
-import React, { Component } from 'react'
-import { graphql, gql } from 'react-apollo'
-import { withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
+import { graphql, gql } from 'react-apollo';
+import { withRouter } from 'react-router-dom';
 import Formsy from 'formsy-react';
-import { RaisedButton, Paper } from 'material-ui'
-import { FormsyText } from 'formsy-material-ui/lib'
-import styled from 'styled-components'
-import {GC_AUTH_TOKEN, GC_USER_ID} from '../utils/constants.js'
+import { RaisedButton, Paper } from 'material-ui';
+import { FormsyText } from 'formsy-material-ui/lib';
+import styled from 'styled-components';
+import { GC_AUTH_TOKEN, GC_USER_ID } from '../utils/constants.js';
 
 class CreateUser extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       login: true,
       email: '',
@@ -17,70 +17,74 @@ class CreateUser extends Component {
       passwordCheck: '',
       firstName: '',
       LastName: '',
-      canSubmit: false,
-
-    }
+      canSubmit: false
+    };
   }
 
   enableButton = () => {
-    this.setState({ canSubmit: true })
-  }
+    this.setState({ canSubmit: true });
+  };
 
   disableButton = () => {
-    this.setState({ canSubmit: false })
-  }
+    this.setState({ canSubmit: false });
+  };
 
   handleEmailChange = event => {
-    this.setState({ email: event.target.value })
-  }
+    this.setState({ email: event.target.value });
+  };
 
   handlePasswordChange = event => {
-    this.setState({ password: event.target.value })
-  }
+    this.setState({ password: event.target.value });
+  };
 
   handleFirstNameChange = event => {
-    this.setState({ firstName: event.target.value })
-  }
+    this.setState({ firstName: event.target.value });
+  };
 
   handleLastNameChange = event => {
-    this.setState({ lastName: event.target.value })
-  }
+    this.setState({ lastName: event.target.value });
+  };
 
   handlePasswordCheck = event => {
-    this.setState({ passwordCheck: event.target.value })
-  }
-
+    this.setState({ passwordCheck: event.target.value });
+  };
 
   createUser = () => {
-    const {firstName, lastName, email, password} = this.state
-    this.props.createUserMutation({variables: {firstName, lastName, email, password}})
-      .then((response) => {
-            window.localStorage.setItem(GC_AUTH_TOKEN, response.data.signinUser.token)
-            window.localStorage.setItem(GC_USER_ID, response.data.signinUser.user.id)
-            window.location.reload();
-            //Default users to the Calendar page
-            this.props.history.push('/Calendar')
-          }).catch((e) => {
-            console.error(e)
-            this.props.history.push('/')
-          })
-      }
+    const { firstName, lastName, email, password } = this.state;
+    this.props
+      .createUserMutation({
+        variables: { firstName, lastName, email, password }
+      })
+      .then(response => {
+        window.localStorage.setItem(
+          GC_AUTH_TOKEN,
+          response.data.signinUser.token
+        );
+        window.localStorage.setItem(
+          GC_USER_ID,
+          response.data.signinUser.user.id
+        );
+        window.location.reload();
+        //Default users to the Calendar page
+        this.props.history.push('/Calendar');
+      })
+      .catch(e => {
+        console.error(e);
+        this.props.history.push('/');
+      });
+  };
 
-
-
-  render () {
-
+  render() {
     const styles = {
       paperStyle: {
         width: '300px',
         margin: '0 auto',
         marginBottom: '30px',
         paddingBottom: '10px',
-        overflow: 'hidden',
-
+        overflow: 'hidden'
       },
       inputStyle: {
-        margin: 'auto',
+        margin: 'auto'
       },
       submitStyle: {
         margin: '20px auto',
@@ -92,15 +96,21 @@ class CreateUser extends Component {
         flexDirection: 'column',
         margin: '0 auto'
       }
-    }
+    };
 
-    const {paperStyle, inputStyle, submitStyle, formStyle } = styles;
+    const { paperStyle, inputStyle, submitStyle, formStyle } = styles;
 
-    return(
+    return (
       <StyledPage>
-        <AppText>T<span className='logo-i'>i</span>pout</AppText>
-        <StyledContainer className='create-user'>
-          <h2 style={{'color': 'white', 'textShadow': '0 2px 2px rgba(0,0,0,0.4)'}}>Reg<span className='logo-i'>i</span>ster</h2>
+        <AppText>
+          T<span className="logo-i">i</span>pout
+        </AppText>
+        <StyledContainer className="create-user">
+          <h2
+            style={{ color: 'white', textShadow: '0 2px 2px rgba(0,0,0,0.4)' }}
+          >
+            Reg<span className="logo-i">i</span>ster
+          </h2>
           <Paper style={paperStyle} zDepth={2}>
             <Formsy.Form
               onValid={this.enableButton}
@@ -110,64 +120,64 @@ class CreateUser extends Component {
               style={formStyle}
             >
               <FormsyText
-                name='First Name'
+                name="First Name"
                 required
-                validations='isWords'
-                floatingLabelText='First Name'
+                validations="isWords"
+                floatingLabelText="First Name"
                 value={this.state.FirstName}
                 onChange={this.handleFirstNameChange}
-                validationError='Please enter a first name'
+                validationError="Please enter a first name"
                 style={inputStyle}
               />
               <FormsyText
-                name='Last Name'
+                name="Last Name"
                 required
-                validations='isWords'
-                floatingLabelText='Last Name'
+                validations="isWords"
+                floatingLabelText="Last Name"
                 value={this.state.lastName}
                 onChange={this.handleLastNameChange}
-                validationError='Please enter a valid last name'
+                validationError="Please enter a valid last name"
                 style={inputStyle}
               />
               <FormsyText
-                name='Email'
+                name="Email"
                 required
-                validations='isEmail'
-                floatingLabelText='Email'
+                validations="isEmail"
+                floatingLabelText="Email"
                 value={this.state.email}
                 onChange={this.handleEmailChange}
-                validationError='Please enter a valid email address'
+                validationError="Please enter a valid email address"
                 style={inputStyle}
               />
               <FormsyText
-                name='password'
-                type='password'
+                name="password"
+                type="password"
                 required
-                validations='minLength:6'
-                floatingLabelText='Password'
+                validations="minLength:6"
+                floatingLabelText="Password"
                 value={this.state.password}
                 onChange={this.handlePasswordChange}
-                validationError='Password must be minimum 6 characters'
-                autoComplete='off'
+                validationError="Password must be minimum 6 characters"
+                autoComplete="off"
                 style={inputStyle}
               />
               <FormsyText
-                name='passwordCheck'
-                type='password'
+                name="passwordCheck"
+                type="password"
                 required
-                validations='equalsField:password'
-                floatingLabelText='Confirm Password'
+                validations="equalsField:password"
+                floatingLabelText="Confirm Password"
                 value={this.state.passwordCheck}
                 onChange={this.handlePasswordCheck}
-                validationError='Passwords must match'
-                autoComplete='off'
+                validationError="Passwords must match"
+                autoComplete="off"
                 style={inputStyle}
               />
               <div>
                 <RaisedButton
                   style={submitStyle}
                   onTouchTap={() => this.props.history.push('/')}
-                  label='Go Back'
+                  label="Go Back"
                 />
                 <RaisedButton
                   style={submitStyle}
@@ -181,45 +191,39 @@ class CreateUser extends Component {
           </Paper>
         </StyledContainer>
       </StyledPage>
-    )
+    );
   }
-
 }
 
-
-
 const createUserMutation = gql`
-mutation CreateUserMutation($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
-  createUser(
-    firstName: $firstName,
-    lastName: $lastName
-    authProvider: {
-      email: {
-        email: $email,
-        password: $password
-      }
-    }
+  mutation CreateUserMutation(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
   ) {
-    id
-  }
-  signinUser(email: {
-    email: $email,
-    password: $password
-  }) {
+    createUser(
+      firstName: $firstName
+      lastName: $lastName
+      authProvider: { email: { email: $email, password: $password } }
+    ) {
+      id
+    }
+    signinUser(email: { email: $email, password: $password }) {
       token
       user {
         id
       }
     }
   }
-`
+`;
 
 const StyledContainer = styled.div`
   padding-top: 4vh;
   background-color: #c4c4c4;
   color: white;
   margin: 0 auto;
-`
+`;
 
 const StyledPage = styled.div`
   height: 100vh;
@@ -239,14 +243,16 @@ const StyledPage = styled.div`
     color: white;
   }
 
-`
+`;
 
 const AppText = styled.h2`
   margin: 0 auto;
   padding-top: 6vh;
-  text-shadow: 0 2px 2px rgba(0,0,0,0.4);
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.4);
   color: white;
   font-size: 90px;
-`
+`;
 
-export default graphql(createUserMutation, { name: 'createUserMutation'})(withRouter(CreateUser))
+export default graphql(createUserMutation, { name: 'createUserMutation' })(
+  withRouter(CreateUser)
+);
