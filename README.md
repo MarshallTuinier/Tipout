@@ -1,6 +1,8 @@
 # Tipout
 Tip-tracking and statistics software built with React, Apollo, and GraphQL.
 
+This is a work in progress, and in beta!! Please follow along for any changes to the project.  For any bugs you catch, please start a new issue. If you would like to contribute, please send a PR.
+
 # Starting the Project
 
 git clone
@@ -13,4 +15,4 @@ npm start
 
 # Demo
 
-To view a working demo, head over to http://tipout.surge.sh
+To view a working demo, head over to https://librarian-stake-28710.netlify.com/
