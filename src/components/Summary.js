@@ -62,8 +62,6 @@ class Summary extends Component {
       'November',
       'December'
     ];
-    console.log(summaryData);
-    console.log(this.props);
     return (
       <div className={this.props.className}>
         <CalendarHeader
