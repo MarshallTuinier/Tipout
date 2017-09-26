@@ -179,7 +179,8 @@ const Content = styled.div`
     }
 
     p {
-      font-size: 33px;
+      font-size: 25px;
+      margin: 150px 1em;
     }
   }
 `;
