@@ -48,7 +48,7 @@ class SignInUser extends Component {
         );
         window.location.reload();
         //Default users to the Calendar view
-        this.props.history.push('/Calendar');
+        this.props.history.push('/');
       })
       .catch(e => {
         alert('Error signing in, please try again.');

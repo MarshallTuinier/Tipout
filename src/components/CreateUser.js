@@ -66,7 +66,7 @@ class CreateUser extends Component {
         );
         window.location.reload();
         //Default users to the Calendar page
-        this.props.history.push('/Calendar');
+        this.props.history.push('/');
       })
       .catch(e => {
         console.error(e);
