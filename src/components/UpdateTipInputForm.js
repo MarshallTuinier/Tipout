@@ -56,11 +56,7 @@ class UpdateTipInputForm extends React.Component {
   submitForm = data => {
     const tipAmount = parseFloat(this.state.tipAmount);
     const hoursWorked = parseFloat(this.state.hoursWorked);
-    const year = this.props.year;
-    const month = this.props.month;
-    const day = this.props.day;
-    const notes = this.state.notes;
-    const id = this.props.id;
+    const { year, month, day, notes, id } = this.props;
 
     this.props
       .updateMutation({
