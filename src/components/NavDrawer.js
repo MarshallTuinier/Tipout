@@ -49,7 +49,7 @@ class NavDrawer extends Component {
         <MenuItem
           onTouchTap={() => {
             this.props.handleClose();
-            this.props.history.push('/Calendar');
+            this.props.history.push('/');
           }}
         >
           Calendar

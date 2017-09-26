@@ -27,7 +27,8 @@ class App extends React.Component {
         <Nav data={this.props.userQuery} />
         <Switch>
           <Route
-            path="/Calendar"
+            path="/"
+            exact
             component={() => (
               <Calendar
                 data={this.props.userQuery}
