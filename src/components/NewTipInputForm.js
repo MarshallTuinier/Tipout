@@ -65,7 +65,8 @@ class NewTipInputForm extends React.Component {
   submitForm = () => {
     const tipAmount = parseFloat(this.state.tipAmount);
     const hoursWorked = parseFloat(this.state.hoursWorked);
-    const { year, month, day, notes, userId, dayName } = this.props;
+    const { year, month, day, userId, dayName } = this.props;
+    const { notes } = this.state;
     const fullDate = `${month}/${day}/${year}`;
 
     this.props

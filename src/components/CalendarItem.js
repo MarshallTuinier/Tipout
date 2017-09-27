@@ -166,7 +166,7 @@ class CalendarItem extends Component {
                 year={this.props.year}
                 month={this.props.month}
                 day={this.props.date}
-                user={this.props.user}
+                userId={this.props.user}
                 dayName={dayName}
               />
             </Dialog>
