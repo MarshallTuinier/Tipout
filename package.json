@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@vx/axis": "^0.0.140",
+    "@vx/gradient": "^0.0.140",
+    "@vx/point": "^0.0.136",
+    "@vx/responsive": "^0.0.140",
+    "@vx/scale": "^0.0.140",
+    "@vx/shape": "^0.0.140",
+    "@vx/tooltip": "^0.0.140",
     "apollo-client": "^1.9.0",
     "formsy-material-ui": "^0.6.2",
     "formsy-react": "^0.19.5",
