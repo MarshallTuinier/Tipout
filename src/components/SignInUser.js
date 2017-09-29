@@ -46,9 +46,9 @@ class SignInUser extends Component {
           GC_USER_ID,
           response.data.signinUser.user.id
         );
-        window.location.reload();
         //Default users to the Calendar view
         this.props.history.push('/');
+        window.location.reload();
       })
       .catch(e => {
         alert('Error signing in, please try again.');

@@ -36,6 +36,12 @@
   dependencies:
     d3-shape "^1.0.6"
 
+"@vx/event@^0.0.140":
+  version "0.0.140"
+  resolved "https://registry.yarnpkg.com/@vx/event/-/event-0.0.140.tgz#658ec4de92cd61df40b883296168d4e0824015bf"
+  dependencies:
+    "@vx/point" "0.0.136"
+
 "@vx/gradient@^0.0.140":
   version "0.0.140"
   resolved "https://registry.yarnpkg.com/@vx/gradient/-/gradient-0.0.140.tgz#56b421016cbae0dcb00190cfffb9e860a28febf4"

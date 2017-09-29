@@ -132,6 +132,11 @@ class CalendarItem extends Component {
           modal={false}
           open={this.state.showDialog}
           onRequestClose={this.handleClose}
+          contentStyle={{
+            width: '100%',
+            maxWidth: '500px',
+            height: '80%'
+          }}
         >
           {!!this.state.tipData ? (
             <span>
@@ -156,10 +161,14 @@ class CalendarItem extends Component {
               modal={false}
               open={this.state.showInputForm}
               onRequestClose={this.hideInputForm}
-              autoScrollBodyContent={true}
-              style={{
-                width: '95%'
+              autoDetectWindowHeight={false}
+              repositionOnUpdate={false}
+              contentStyle={{
+                width: '90vw',
+                maxWidth: '500px',
+                transform: 'none'
               }}
+              bodyStyle={{ padding: '0' }}
             >
               <NewTipInputForm
                 hideInputForm={this.hideInputForm}
@@ -175,11 +184,14 @@ class CalendarItem extends Component {
               modal={false}
               open={this.state.showInputForm}
               onRequestClose={this.hideInputForm}
-              autoScrollBodyContent={true}
+              autoDetectWindowHeight={false}
+              repositionOnUpdate={false}
               contentStyle={{
-                width: '90%',
-                maxWidth: '500px'
+                width: '90vw',
+                maxWidth: '500px',
+                transform: 'none'
               }}
+              bodyStyle={{ padding: '0' }}
             >
               <UpdateTipInputForm
                 hideInputForm={this.hideInputForm}

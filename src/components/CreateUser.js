@@ -64,9 +64,9 @@ class CreateUser extends Component {
           GC_USER_ID,
           response.data.signinUser.user.id
         );
-        window.location.reload();
         //Default users to the Calendar page
         this.props.history.push('/');
+        window.location.reload();
       })
       .catch(e => {
         console.error(e);
