@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import CalendarHeader from './CalendarHeader';
-import getAllSummaryData from '../utils/tipSummaryCalculations';
+import getStatistics from '../utils/tipCalculations';
 import suffixer from '../utils/suffixer';
 import ScrollAnimation from 'react-animate-on-scroll';
 
@@ -45,9 +45,9 @@ class Summary extends Component {
     //Here we filter our data to only diplay from the month selected in the CalendarHeader Component
     //Data comes from various helper functions in tipSummaryCalculations in the utils folder
     const filteredTipsByMonth = this.props.data.User.tips.filter(
-      month => month.month === this.state.month
+      data => data.month === this.state.month && data.year === this.state.year
     );
-    const summaryData = getAllSummaryData(filteredTipsByMonth);
+    const summaryData = getStatistics(filteredTipsByMonth);
     const monthNames = [
       'January',
       'February',

@@ -12,6 +12,8 @@
     "@vx/shape": "^0.0.140",
     "@vx/tooltip": "^0.0.140",
     "apollo-client": "^1.9.0",
+    "d3-array": "^1.2.1",
+    "d3-time-format": "^2.0.5",
     "formsy-material-ui": "^0.6.2",
     "formsy-react": "^0.19.5",
     "material-ui": "^0.18.7",

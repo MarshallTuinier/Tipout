@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import YearDropdown from './YearDropdown';
 import MonthDropdown from './MonthDropdown';
 import Chart from './Chart';
-import trailingZero from '../utils/trailingZero';
+import getStatistics from '../utils/tipCalculations';
 
 class MonthlyStatistics extends React.Component {
   constructor(props) {
@@ -36,14 +36,26 @@ class MonthlyStatistics extends React.Component {
       );
     });
 
+    //Grab some statistics based on the filtered data as well
+    const statistics = getStatistics(filteredData);
+    console.log(statistics);
     //Here lets shape our data into something useable by a VX bar Chart
     const data = filteredData.map(d => {
       return {
-        date: `${d.year}-${trailingZero(d.month)}-${trailingZero(d.day)}`,
+        date: new Date(d.year, d.month, d.day),
         tipAmount: d.tipAmount
       };
     });
 
+    //Below we add a piece of mock data to the end of our data set for the first day of the next month
+    //This will allow us to maintin the full month scale on the chart's x-axis
+    let paddedData = [];
+    if (data.length > 0) {
+      paddedData = data.concat({
+        date: new Date(this.state.yearValue, this.state.monthValue + 1, 1),
+        tipAmount: 1
+      });
+    }
     return (
       <div className={this.props.className}>
         <FilterBar>
@@ -67,7 +79,13 @@ class MonthlyStatistics extends React.Component {
           </Col>
         </FilterBar>
         <ChartContainer>
-          <Chart data={data} />
+          {data && (
+            <Chart
+              data={paddedData}
+              month={this.state.monthValue}
+              year={this.state.yearValue}
+            />
+          )}
         </ChartContainer>
       </div>
     );
@@ -94,7 +112,7 @@ const Col = styled.div`
   @media (max-width: 600px) {
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 100px;
 
     p {
       margin: 0;
@@ -109,9 +127,9 @@ const ChartContainer = styled.div`
   background-color: rgb(0, 188, 212);
   border-radius: 8px;
   color: white;
-  padding-bottom: 50px;
+  padding: 15px;
   @media (max-width: 650px) {
-    width: 300px;
+    width: 90vw;
     height: 200px;
   }
 `;
