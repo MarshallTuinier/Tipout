@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql, gql } from 'react-apollo';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import App from './App';
 import Landing from './components/Landing';
 import CreateUser from './components/CreateUser';
@@ -26,7 +26,8 @@ class AppContainer extends Component {
           <Switch>
             <Route path="/CreateUser" component={CreateUser} />
             <Route path="/SignInUser" component={SignInUser} />
-            <Route exact path="/*" component={Landing} />
+            <Route path="/Landing" component={Landing} />
+            <Redirect from="/" to="/Landing" />
           </Switch>
         </div>
       );
