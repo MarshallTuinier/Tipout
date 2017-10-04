@@ -64,8 +64,8 @@ class CreateUser extends Component {
           GC_USER_ID,
           response.data.signinUser.user.id
         );
-        //Default users to the Calendar page
-        this.props.history.push('/Calendar');
+        //Default users to the welcome page
+        this.props.history.push('/');
         window.location.reload();
       })
       .catch(e => {

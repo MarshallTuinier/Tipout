@@ -46,8 +46,8 @@ class SignInUser extends Component {
           GC_USER_ID,
           response.data.signinUser.user.id
         );
-        //Default users to the Calendar view
-        this.props.history.push('/Calendar');
+        //Default users to the Welcome view
+        this.props.history.push('/');
         window.location.reload();
       })
       .catch(e => {
