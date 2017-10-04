@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { graphql, gql } from 'react-apollo';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import App from './App';
 import Landing from './components/Landing';
 import Loading from './components/Loading';
