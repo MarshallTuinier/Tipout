@@ -26,10 +26,9 @@ class App extends React.Component {
       <div className={this.props.className}>
         <Nav data={this.props.userQuery} />
         <Switch>
-          <Redirect from="/Landing" to="/" />
+          <Redirect from="/Landing" to="/Calendar" />
           <Route
-            path="/"
-            exact
+            path="/Calendar"
             component={() => (
               <Calendar
                 data={this.props.userQuery}

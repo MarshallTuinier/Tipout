@@ -47,7 +47,7 @@ class SignInUser extends Component {
           response.data.signinUser.user.id
         );
         //Default users to the Calendar view
-        this.props.history.push('/');
+        this.props.history.push('/Calendar');
         window.location.reload();
       })
       .catch(e => {
