@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { graphql, gql } from 'react-apollo';
 import Nav from './components/Nav';
 import Calendar from './components/Calendar';
@@ -26,6 +26,7 @@ class App extends React.Component {
       <div className={this.props.className}>
         <Nav data={this.props.userQuery} />
         <Switch>
+          <Redirect from="/Landing" to="/" />
           <Route
             path="/"
             exact

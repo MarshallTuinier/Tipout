@@ -19,21 +19,20 @@ class AppContainer extends Component {
     if (this.props.loading === true) {
       return <div>LOADING</div>;
     }
-
-    if (!this.props.data.user) {
-      return (
-        <div>
-          <Switch>
-            <Route path="/CreateUser" component={CreateUser} />
-            <Route path="/SignInUser" component={SignInUser} />
-            <Route path="/Landing" component={Landing} />
-            <Redirect from="/" to="/Landing" />
-          </Switch>
-        </div>
-      );
+    if (this.props.data.user) {
+      return <App id={this.props.data.user.id} />;
     }
 
-    return <App id={this.props.data.user.id} />;
+    return (
+      <div>
+        <Switch>
+          <Route path="/CreateUser" component={CreateUser} />
+          <Route path="/SignInUser" component={SignInUser} />
+          <Route path="/Landing" component={Landing} />
+          <Redirect from="/" to="/Landing" />
+        </Switch>
+      </div>
+    );
   }
 }
 

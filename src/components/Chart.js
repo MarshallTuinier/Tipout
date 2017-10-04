@@ -36,7 +36,7 @@ class Chart extends React.Component {
       top: 15,
       bottom: 20,
       left: 0,
-      right: 50
+      right: 0
     };
 
     const bisectDate = bisector(d => x(d)).right;

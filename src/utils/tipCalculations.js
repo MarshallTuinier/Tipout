@@ -133,7 +133,8 @@ const getStatistics = arr => {
     bestHourlyDayOfWeek,
     totalTips,
     totalHours,
-    totalAverage
+    totalAverage,
+    allData: arr
   };
 };
 
