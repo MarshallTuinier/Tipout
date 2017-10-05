@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import { graphql, gql } from 'react-apollo';
 import { withRouter } from 'react-router-dom';
-import Formsy from 'formsy-react';
-import { RaisedButton, Paper } from 'material-ui';
-import { FormsyText } from 'formsy-material-ui/lib';
 import styled from 'styled-components';
-import { GC_AUTH_TOKEN, GC_USER_ID } from '../utils/constants.js';
 
 class SignInUser extends Component {
   render() {
