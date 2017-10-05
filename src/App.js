@@ -6,7 +6,7 @@ import Nav from './components/Nav';
 import Calendar from './components/Calendar';
 import Summary from './components/Summary';
 import Statistics from './components/Statistics';
-
+import Welcome from './components/Welcome';
 class App extends React.Component {
   componentDidMount() {
     /*
@@ -49,6 +49,7 @@ class App extends React.Component {
               />
             )}
           />
+          <Route path="/*" component={Welcome} />
         </Switch>
       </div>
     );
