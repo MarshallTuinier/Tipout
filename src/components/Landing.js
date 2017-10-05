@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 const Landing = props => {
   return (
-    <div>
+    <StyledPage>
       <ImageContainer />
       <Content>
         <div className="text">Welcome to</div>
@@ -28,10 +28,15 @@ const Landing = props => {
           </p>
         </div>
       </Content>
-    </div>
+    </StyledPage>
   );
 };
 
+const StyledPage = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: #c4c4c4;
+`;
 const Button = styled.div`
   border-radius: 4px;
   display: flex;
@@ -50,6 +55,8 @@ const Button = styled.div`
 `;
 
 const Content = styled.div`
+  position: relative;
+  z-index: 2;
   color: white;
   margin: 5px;
   margin-top: -65vh;
@@ -92,8 +99,9 @@ const ImageContainer = styled.div`
   background-position-y: 70%;
   background-size: cover;
   filter: blur(3px) brightness(0.6);
-  z-index: -1;
+  z-index: 1;
 `;
 
 const StyledLink = styled(Link)`color: white;`;
+
 export default withRouter(Landing);
