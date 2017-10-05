@@ -49,6 +49,7 @@ class CreateUser extends Component {
     this.setState({ passwordCheck: event.target.value });
   };
 
+  //Function to handle the creation of a user
   createUser = () => {
     const { firstName, lastName, email, password } = this.state;
     this.props
@@ -56,6 +57,7 @@ class CreateUser extends Component {
         variables: { firstName, lastName, email, password }
       })
       .then(response => {
+        //Set our auth tokens to local storage for persistent sign-ins
         window.localStorage.setItem(
           GC_AUTH_TOKEN,
           response.data.signinUser.token

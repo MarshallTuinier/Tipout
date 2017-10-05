@@ -4,31 +4,6 @@ import styled from 'styled-components';
 
 class SignInUser extends Component {
   render() {
-    const styles = {
-      paperStyle: {
-        width: '300px',
-        margin: '0 auto',
-        marginBottom: '30px',
-        paddingBottom: '10px',
-        overflow: 'hidden'
-      },
-      inputStyle: {
-        margin: 'auto'
-      },
-      submitStyle: {
-        margin: '20px auto',
-        marginRight: '10px',
-        marginLeft: '5px'
-      },
-      formStyle: {
-        display: 'flex',
-        flexDirection: 'column',
-        margin: '0 auto'
-      }
-    };
-
-    const { paperStyle, inputStyle, submitStyle, formStyle } = styles;
-
     return (
       <StyledPage>
         <AppText>
