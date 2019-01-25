@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import YearDropdown from './YearDropdown';
-import MonthDropdown from './MonthDropdown';
-import Chart from './Chart';
-import getStatistics from '../utils/tipCalculations';
-import { Paper } from 'material-ui';
+import React from "react";
+import styled from "styled-components";
+import YearDropdown from "./YearDropdown";
+import MonthDropdown from "./MonthDropdown";
+import Chart from "./Chart";
+import getStatistics from "../utils/tipCalculations";
+import { Paper } from "material-ui";
 
 class MonthlyStatistics extends React.Component {
   constructor(props) {
@@ -39,7 +39,6 @@ class MonthlyStatistics extends React.Component {
 
     //Grab some statistics based on the filtered data as well
     const statistics = getStatistics(filteredData);
-    console.log(statistics);
 
     //Here lets shape our data into something useable by a VX bar Chart
     const data = filteredData.map(d => {
@@ -92,7 +91,7 @@ class MonthlyStatistics extends React.Component {
 
         <Paper
           zDepth={2}
-          style={{ padding: '1em', width: '95%', margin: '3em auto' }}
+          style={{ padding: "1em", width: "95%", margin: "3em auto" }}
         >
           <StatsContainer>
             <StatTitle>All Days</StatTitle>
@@ -105,16 +104,16 @@ class MonthlyStatistics extends React.Component {
               {statistics.totalHours}
             </StatItem>
             <StatItem>
-              <BoldSpan>Total Tips: </BoldSpan>
-              ${statistics.totalTips}
+              <BoldSpan>Total Tips: </BoldSpan>${statistics.totalTips}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Average: </BoldSpan>
-              ${statistics.totalTips / statistics.allData.length}
+              <BoldSpan>Daily Average: </BoldSpan>$
+              {Math.round(statistics.totalTips / statistics.allData.length) ||
+                0}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Hourly Average: </BoldSpan>
-              ${statistics.totalAverage} / hr
+              <BoldSpan>Daily Hourly Average: </BoldSpan>$
+              {statistics.totalAverage} / hr
             </StatItem>
             <StatTitle>Sunday</StatTitle>
             <StatItem>
@@ -126,17 +125,19 @@ class MonthlyStatistics extends React.Component {
               {statistics.dayOfWeekData.Sunday.totalHours}
             </StatItem>
             <StatItem>
-              <BoldSpan>Total Tips: </BoldSpan>
-              ${statistics.dayOfWeekData.Sunday.totalTips}
+              <BoldSpan>Total Tips: </BoldSpan>$
+              {statistics.dayOfWeekData.Sunday.totalTips}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Sunday.totalTips /
-                statistics.dayOfWeekData.Sunday.tipData.length}
+              <BoldSpan>Daily Average: </BoldSpan>$
+              {Math.round(
+                statistics.dayOfWeekData.Sunday.totalTips /
+                  statistics.dayOfWeekData.Sunday.tipData.length
+              ) || 0}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Hourly Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Sunday.hourlyAverage} / hr
+              <BoldSpan>Daily Hourly Average: </BoldSpan>$
+              {statistics.dayOfWeekData.Sunday.hourlyAverage} / hr
             </StatItem>
             <StatTitle>Monday</StatTitle>
             <StatItem>
@@ -148,17 +149,19 @@ class MonthlyStatistics extends React.Component {
               {statistics.dayOfWeekData.Monday.totalHours}
             </StatItem>
             <StatItem>
-              <BoldSpan>Total Tips: </BoldSpan>
-              ${statistics.dayOfWeekData.Monday.totalTips}
+              <BoldSpan>Total Tips: </BoldSpan>$
+              {statistics.dayOfWeekData.Monday.totalTips}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Monday.totalTips /
-                statistics.dayOfWeekData.Monday.tipData.length}
+              <BoldSpan>Daily Average: </BoldSpan>$
+              {Math.round(
+                statistics.dayOfWeekData.Monday.totalTips /
+                  statistics.dayOfWeekData.Monday.tipData.length
+              ) || 0}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Hourly Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Monday.hourlyAverage} / hr
+              <BoldSpan>Daily Hourly Average: </BoldSpan>$
+              {statistics.dayOfWeekData.Monday.hourlyAverage} / hr
             </StatItem>
             <StatTitle>Tuesday</StatTitle>
             <StatItem>
@@ -170,17 +173,19 @@ class MonthlyStatistics extends React.Component {
               {statistics.dayOfWeekData.Tuesday.totalHours}
             </StatItem>
             <StatItem>
-              <BoldSpan>Total Tips: </BoldSpan>
-              ${statistics.dayOfWeekData.Tuesday.totalTips}
+              <BoldSpan>Total Tips: </BoldSpan>$
+              {statistics.dayOfWeekData.Tuesday.totalTips}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Tuesday.totalTips /
-                statistics.dayOfWeekData.Tuesday.tipData.length}
+              <BoldSpan>Daily Average: </BoldSpan>$
+              {Math.round(
+                statistics.dayOfWeekData.Tuesday.totalTips /
+                  statistics.dayOfWeekData.Tuesday.tipData.length
+              ) || 0}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Hourly Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Tuesday.hourlyAverage} / hr
+              <BoldSpan>Daily Hourly Average: </BoldSpan>$
+              {statistics.dayOfWeekData.Tuesday.hourlyAverage} / hr
             </StatItem>
             <StatTitle>Wednesday</StatTitle>
             <StatItem>
@@ -192,17 +197,19 @@ class MonthlyStatistics extends React.Component {
               {statistics.dayOfWeekData.Wednesday.totalHours}
             </StatItem>
             <StatItem>
-              <BoldSpan>Total Tips: </BoldSpan>
-              ${statistics.dayOfWeekData.Wednesday.totalTips}
+              <BoldSpan>Total Tips: </BoldSpan>$
+              {statistics.dayOfWeekData.Wednesday.totalTips}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Wednesday.totalTips /
-                statistics.dayOfWeekData.Wednesday.tipData.length}
+              <BoldSpan>Daily Average: </BoldSpan>$
+              {Math.round(
+                statistics.dayOfWeekData.Wednesday.totalTips /
+                  statistics.dayOfWeekData.Wednesday.tipData.length
+              ) || 0}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Hourly Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Wednesday.hourlyAverage} / hr
+              <BoldSpan>Daily Hourly Average: </BoldSpan>$
+              {statistics.dayOfWeekData.Wednesday.hourlyAverage} / hr
             </StatItem>
             <StatTitle>Thursday</StatTitle>
             <StatItem>
@@ -214,17 +221,19 @@ class MonthlyStatistics extends React.Component {
               {statistics.dayOfWeekData.Thursday.totalHours}
             </StatItem>
             <StatItem>
-              <BoldSpan>Total Tips: </BoldSpan>
-              ${statistics.dayOfWeekData.Thursday.totalTips}
+              <BoldSpan>Total Tips: </BoldSpan>$
+              {statistics.dayOfWeekData.Thursday.totalTips}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Thursday.totalTips /
-                statistics.dayOfWeekData.Thursday.tipData.length}
+              <BoldSpan>Daily Average: </BoldSpan>$
+              {Math.round(
+                statistics.dayOfWeekData.Thursday.totalTips /
+                  statistics.dayOfWeekData.Thursday.tipData.length
+              ) || 0}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Hourly Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Thursday.hourlyAverage} / hr
+              <BoldSpan>Daily Hourly Average: </BoldSpan>$
+              {statistics.dayOfWeekData.Thursday.hourlyAverage} / hr
             </StatItem>
             <StatTitle>Friday</StatTitle>
             <StatItem>
@@ -236,17 +245,19 @@ class MonthlyStatistics extends React.Component {
               {statistics.dayOfWeekData.Friday.totalHours}
             </StatItem>
             <StatItem>
-              <BoldSpan>Total Tips: </BoldSpan>
-              ${statistics.dayOfWeekData.Friday.totalTips}
+              <BoldSpan>Total Tips: </BoldSpan>$
+              {statistics.dayOfWeekData.Friday.totalTips}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Friday.totalTips /
-                statistics.dayOfWeekData.Friday.tipData.length}
+              <BoldSpan>Daily Average: </BoldSpan>$
+              {Math.round(
+                statistics.dayOfWeekData.Friday.totalTips /
+                  statistics.dayOfWeekData.Friday.tipData.length
+              ) || 0}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Hourly Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Friday.hourlyAverage} / hr
+              <BoldSpan>Daily Hourly Average: </BoldSpan>$
+              {statistics.dayOfWeekData.Friday.hourlyAverage} / hr
             </StatItem>
             <StatTitle>Saturday</StatTitle>
             <StatItem>
@@ -258,17 +269,19 @@ class MonthlyStatistics extends React.Component {
               {statistics.dayOfWeekData.Saturday.totalHours}
             </StatItem>
             <StatItem>
-              <BoldSpan>Total Tips: </BoldSpan>
-              ${statistics.dayOfWeekData.Saturday.totalTips}
+              <BoldSpan>Total Tips: </BoldSpan>$
+              {statistics.dayOfWeekData.Saturday.totalTips}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Saturday.totalTips /
-                statistics.dayOfWeekData.Saturday.tipData.length}
+              <BoldSpan>Daily Average: </BoldSpan>$
+              {Math.round(
+                statistics.dayOfWeekData.Saturday.totalTips /
+                  statistics.dayOfWeekData.Saturday.tipData.length
+              ) || 0}
             </StatItem>
             <StatItem>
-              <BoldSpan>Daily Hourly Average: </BoldSpan>
-              ${statistics.dayOfWeekData.Saturday.hourlyAverage} / hr
+              <BoldSpan>Daily Hourly Average: </BoldSpan>$
+              {statistics.dayOfWeekData.Saturday.hourlyAverage} / hr
             </StatItem>
           </StatsContainer>
         </Paper>
@@ -339,7 +352,9 @@ const StatItem = styled.p`
   min-width: 275px;
 `;
 
-const BoldSpan = styled.span`font-weight: bold;`;
+const BoldSpan = styled.span`
+  font-weight: bold;
+`;
 
 export default styled(MonthlyStatistics)`
   max-width: 1000px;
